@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myLightTheme = FlexThemeData.light(
-            // useMaterial3: true,
+            useMaterial3: true,
             scheme: FlexScheme.purpleBrown,
             typography: Typography.material2021(
               platform: TargetPlatform.android,
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             }));
 
     final myDarkTheme = FlexThemeData.dark(
-            // useMaterial3: true,
+            useMaterial3: true,
             scheme: FlexScheme.purpleBrown,
             typography: Typography.material2021(
               platform: TargetPlatform.android,
