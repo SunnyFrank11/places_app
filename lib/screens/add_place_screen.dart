@@ -1,0 +1,111 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:places_app/providers/great_places.dart';
+import 'package:places_app/widget/image_input.dart';
+import 'package:places_app/widget/location_input.dart';
+import 'package:provider/provider.dart';
+
+class AddPlaceScreen extends StatefulWidget {
+  const AddPlaceScreen({Key? key}) : super(key: key);
+
+  static const routeName = '/add-place';
+
+  @override
+  State<AddPlaceScreen> createState() => _AddPlaceScreenState();
+}
+
+class _AddPlaceScreenState extends State<AddPlaceScreen> {
+  final TextEditingController _textEditingController = TextEditingController();
+
+  File? _pickedImage;
+
+  void _selectImage(File? pickedImage) {
+    _pickedImage = pickedImage!;
+  }
+
+  void _savePlace() {
+    if (_textEditingController.text.isEmpty || _pickedImage == null) {
+      return;
+    } else {
+      Provider.of<GreatPlaces>(context, listen: false)
+          .addPlace(_textEditingController.text, _pickedImage!);
+      Navigator.of(context).pop();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add a New Place'),
+      ),
+      body: Column(
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    TextField(
+                      // autofocus: true,
+                      decoration: const InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(25),
+                          ),
+                          borderSide: BorderSide(width: 2.0),
+                        ),
+                        labelText: 'Title',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2.0),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(25),
+                          ),
+                        ),
+                      ),
+                      controller: _textEditingController,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ImageInput(
+                      onSelectImage: _selectImage,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const LocationInput()
+                  ],
+                ),
+              ),
+            ),
+          ),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.3,
+                vertical: 15,
+              ),
+              elevation: 0,
+            ),
+            onPressed: _textEditingController.text.isEmpty ? null : _savePlace,
+            icon: const Icon(Icons.add),
+            label: const Text(
+              'Add Place',
+              style: TextStyle(fontSize: 20),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
