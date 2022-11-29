@@ -26,6 +26,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   void _savePlace() {
     if (_titleController.text.isEmpty || _pickedImage == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text('Your input is incomplete'),
+        backgroundColor: Theme.of(context).errorColor,
+        duration: const Duration(seconds: 3),
+      ));
       return;
     } else {
       Provider.of<GreatPlaces>(context, listen: false)
