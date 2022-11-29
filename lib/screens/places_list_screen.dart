@@ -17,6 +17,7 @@ class PlacesListScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            padding: const EdgeInsets.only(right: 25),
             onPressed: () {
               Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
             },
