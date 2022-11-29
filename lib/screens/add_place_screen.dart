@@ -98,10 +98,18 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               elevation: 0,
             ),
             onPressed: _titleController.text.isEmpty ? null : _savePlace,
-            icon: const Icon(Icons.add),
-            label: const Text(
+            icon: Icon(
+              Icons.add,
+              color:
+                  _titleController.text.isNotEmpty ? Colors.white : Colors.grey,
+            ),
+            label: Text(
               'Add Place',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: _titleController.text.isNotEmpty
+                      ? Colors.white
+                      : Colors.grey),
             ),
           )
         ],

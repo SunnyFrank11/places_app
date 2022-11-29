@@ -30,12 +30,12 @@ class _ImageInputState extends State<ImageInput> {
     });
 
     final appDir = await syspath.getApplicationDocumentsDirectory();
-    // gets the directory or folder in the sysetem where the file is saved
+    //! gets the directory or folder in the sysetem where the file is saved
     final fileName = path.basename(_storedImage!.path);
-    // gets the name of the file is saved with;
+    //! gets the name of the file is saved with;
     final savedImage = await _storedImage!.copy('${appDir.path}/$fileName');
-    // saves a copy of the file to directory with the name;
-    print(_storedImage);
+    //! saves a copy of the file to directory with the name;
+    // print(_storedImage);
     widget.onSelectImage(savedImage);
   }
 
@@ -102,10 +102,17 @@ class _ImageInputState extends State<ImageInput> {
               padding: const EdgeInsets.all(15),
             ),
             onPressed: _takePicture,
-            icon: const Icon(Icons.camera),
+            icon: const Icon(
+              Icons.camera_alt_outlined,
+              color: Colors.white,
+              size: 30,
+            ),
             label: const Text(
               'Take Picture',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
+              ),
             ),
           ),
         )
