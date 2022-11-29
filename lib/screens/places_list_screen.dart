@@ -93,7 +93,7 @@ class PlacesListScreen extends StatelessWidget {
                                   greatPlaces.items[i].title.toUpperCase()),
                               trailing: IconButton(
                                 icon: Icon(
-                                  Icons.delete,
+                                  Icons.delete_sharp,
                                   size: 30,
                                   color: Theme.of(context).errorColor,
                                 ),
