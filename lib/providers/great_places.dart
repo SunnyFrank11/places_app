@@ -30,14 +30,6 @@ class GreatPlaces with ChangeNotifier {
     });
   }
 
-  Future<void> deletePlaces(String id) async {
-    final placeId = _items.firstWhere((element) => element.id == id);
-    _items.remove(placeId);
-
-    DBHelper.removeData(id);
-    notifyListeners();
-  }
-
   Future<void> fetchAndSetPlaces() async {
     final dataList = await DBHelper.getData('user_places');
     _items = dataList
@@ -51,6 +43,14 @@ class GreatPlaces with ChangeNotifier {
         )
         .cast<Place>()
         .toList();
+    notifyListeners();
+  }
+
+  Future<void> deletePlaces(String id) async {
+    final placeId = _items.firstWhere((element) => element.id == id);
+    _items.remove(placeId);
+
+    DBHelper.removeData(id);
     notifyListeners();
   }
 }
