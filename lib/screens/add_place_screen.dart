@@ -16,7 +16,7 @@ class AddPlaceScreen extends StatefulWidget {
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
-  final TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
 
   File? _pickedImage;
 
@@ -25,11 +25,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    if (_textEditingController.text.isEmpty || _pickedImage == null) {
+    if (_titleController.text.isEmpty || _pickedImage == null) {
       return;
     } else {
       Provider.of<GreatPlaces>(context, listen: false)
-          .addPlace(_textEditingController.text, _pickedImage!);
+          .addPlace(_titleController.text, _pickedImage!);
       Navigator.of(context).pop();
     }
   }
@@ -38,7 +38,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a New Place'),
+        title: const Text('Add Place'),
       ),
       body: Column(
         // crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,7 +69,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                           ),
                         ),
                       ),
-                      controller: _textEditingController,
+                      controller: _titleController,
                     ),
                     const SizedBox(
                       height: 20,
@@ -97,7 +97,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               ),
               elevation: 0,
             ),
-            onPressed: _textEditingController.text.isEmpty ? null : _savePlace,
+            onPressed: _titleController.text.isEmpty ? null : _savePlace,
             icon: const Icon(Icons.add),
             label: const Text(
               'Add Place',
