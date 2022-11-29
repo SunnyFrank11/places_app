@@ -41,7 +41,6 @@ class GreatPlaces with ChangeNotifier {
             image: File(item['image']),
           ),
         )
-        .cast<Place>()
         .toList();
     notifyListeners();
   }

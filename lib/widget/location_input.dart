@@ -24,8 +24,10 @@ class _LocationInputState extends State<LocationInput> {
       children: [
         Container(
           decoration: BoxDecoration(
-              color:
-                  Theme.of(context).colorScheme.errorContainer.withOpacity(0.8),
+              color: Theme.of(context)
+                  .colorScheme
+                  .primaryContainer
+                  .withOpacity(0.5),
               borderRadius: BorderRadius.circular(20)),
           alignment: Alignment.center,
           height: 170,
