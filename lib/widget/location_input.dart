@@ -32,7 +32,7 @@ class _LocationInputState extends State<LocationInput> {
           width: double.infinity,
           child: _previewImageUrl == null
               ? const Text(
-                  'You have not chosen any location',
+                  'No Location chosen',
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 )
