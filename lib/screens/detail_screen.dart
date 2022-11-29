@@ -17,7 +17,10 @@ class DetailScreen extends StatelessWidget {
         title: Text(myPlace.title),
       ),
       body: Column(children: [
-        Image.file(myPlace.image!),
+        Hero(
+          tag: myPlace.id!,
+          child: Image.file(myPlace.image!),
+        ),
       ]),
     );
   }

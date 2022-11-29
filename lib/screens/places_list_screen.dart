@@ -79,15 +79,17 @@ class PlacesListScreen extends StatelessWidget {
                             child: ListTile(
                               contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 10),
-                              leading: CircleAvatar(
-                                maxRadius: 30,
-                                backgroundImage: FileImage(
-                                  greatPlaces.items[i].image!,
+                              leading: Hero(
+                                tag: greatPlaces.items[i].id!,
+                                child: CircleAvatar(
+                                  maxRadius: 30,
+                                  backgroundImage: FileImage(
+                                    greatPlaces.items[i].image!,
+                                  ),
                                 ),
                               ),
-                              title: Text(greatPlaces.items[i].title
-                                  .toUpperCase()
-                                  .substring(1, 4)),
+                              title: Text(
+                                  greatPlaces.items[i].title.toUpperCase()),
                               trailing: IconButton(
                                 icon: Icon(
                                   Icons.delete,
