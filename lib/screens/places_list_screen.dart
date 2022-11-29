@@ -85,8 +85,9 @@ class PlacesListScreen extends StatelessWidget {
                                   greatPlaces.items[i].image!,
                                 ),
                               ),
-                              title: Text(
-                                  greatPlaces.items[i].title.toUpperCase()),
+                              title: Text(greatPlaces.items[i].title
+                                  .toUpperCase()
+                                  .substring(1, 4)),
                               trailing: IconButton(
                                 icon: Icon(
                                   Icons.delete,
