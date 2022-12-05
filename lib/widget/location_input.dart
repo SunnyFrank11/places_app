@@ -45,10 +45,12 @@ class _LocationInputState extends State<LocationInput> {
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 )
-              : Image.network(
-                  _previewImageUrl!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              : ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: Image.network(
+                    _previewImageUrl!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                 ),
         ),
         const SizedBox(
