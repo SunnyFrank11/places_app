@@ -20,7 +20,13 @@ class DetailScreen extends StatelessWidget {
         child: Column(children: [
           Hero(
             tag: myPlace.id!,
-            child: Image.file(myPlace.image!),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.file(
+                myPlace.image!,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
         ]),
       ),

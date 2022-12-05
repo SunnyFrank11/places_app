@@ -19,7 +19,6 @@ class _LocationInputState extends State<LocationInput> {
       latitude: locData.latitude!,
       longitude: locData.longitude!,
     );
-
     setState(() {
       _previewImageUrl = currentLocationUrl;
     });
@@ -47,8 +46,10 @@ class _LocationInputState extends State<LocationInput> {
                 )
               : ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  child: Image.network(
-                    _previewImageUrl!,
+                  child: FadeInImage.assetNetwork(
+                    placeholderFit: BoxFit.contain,
+                    image: _previewImageUrl!,
+                    placeholder: 'assets/images/map-icon.png',
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
