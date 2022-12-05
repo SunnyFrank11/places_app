@@ -13,7 +13,7 @@ class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
 
   Future<void> _getCurrentLocation() async {
-    final locationData = Location();
+    final locationData = Location(); //! this is from the location package
     final locData = await locationData.getLocation();
     final currentLocationUrl = LocationHelper.generateLocationPreviewImage(
       latitude: locData.latitude!,
@@ -51,6 +51,7 @@ class _LocationInputState extends State<LocationInput> {
                     _previewImageUrl!,
                     fit: BoxFit.cover,
                     width: double.infinity,
+                  ),
                 ),
         ),
         const SizedBox(
