@@ -24,6 +24,20 @@ class _LocationInputState extends State<LocationInput> {
     });
   }
 
+  Future<void> _selectOnMap() async {
+    final selectedMap = await Navigator.of(context).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: ((context) => const MapScreen(isSelecting: true)),
+      ),
+    );
+    if (selectedMap == null) {
+      return;
+    }
+
+    ///.....///
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
