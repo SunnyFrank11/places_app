@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         title: 'Great Places',
         theme: myLightTheme,
         darkTheme: myDarkTheme,
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.system,
         home: const PlacesListScreen(),
         routes: {
           PlacesListScreen.routeName: (context) => const PlacesListScreen(),
