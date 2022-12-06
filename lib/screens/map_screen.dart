@@ -32,35 +32,44 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          if (_pickeLocation != null)
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop(_pickeLocation);
-                },
-                icon: const Icon(Icons.check_box))
-        ],
         title: const Text('Map'),
       ),
-      body: GoogleMap(
-        trafficEnabled: true,
-        buildingsEnabled: true,
-        initialCameraPosition: CameraPosition(
-          zoom: 15,
-          target: LatLng(widget.initialPosition.latitute,
-              widget.initialPosition.longitude),
+      body: Stack(children: [
+        GoogleMap(
+          trafficEnabled: true,
+          buildingsEnabled: true,
+          initialCameraPosition: CameraPosition(
+            zoom: 15,
+            target: LatLng(widget.initialPosition.latitute,
+                widget.initialPosition.longitude),
+          ),
+          onTap: widget.isSelecting ? _selectLocation : null,
+          markers: _pickeLocation == null
+              ? {}
+              : {
+                  Marker(
+                    markerId: const MarkerId('P1'),
+                    position: LatLng(
+                        _pickeLocation!.latitude, _pickeLocation!.longitude),
+                  ),
+                },
         ),
-        onTap: widget.isSelecting ? _selectLocation : null,
-        markers: _pickeLocation == null
-            ? {}
-            : {
-                Marker(
-                  markerId: const MarkerId('P1'),
-                  position: LatLng(
-                      _pickeLocation!.latitude, _pickeLocation!.longitude),
+        Positioned(
+          bottom: 50,
+          left: 120,
+          child: _pickeLocation == null
+              ? Container()
+              : ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(_pickeLocation);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Theme.of(context).colorScheme.secondary),
+                  child: const Text('COMFIRM LOCATION'),
                 ),
-              },
-      ),
+        )
+      ]),
     );
   }
 }
