@@ -50,7 +50,9 @@ class _MapScreenState extends State<MapScreen> {
                   Marker(
                     markerId: const MarkerId('P1'),
                     position: LatLng(
-                        _pickeLocation!.latitude, _pickeLocation!.longitude),
+                      _pickeLocation!.latitude,
+                      _pickeLocation!.longitude,
+                    ),
                   ),
                 },
         ),
