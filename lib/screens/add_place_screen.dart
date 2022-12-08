@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:places_app/models/place.dart';
 import 'package:places_app/providers/great_places.dart';
 import 'package:places_app/widget/image_input.dart';
 import 'package:places_app/widget/location_input.dart';
@@ -19,13 +20,20 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final TextEditingController _titleController = TextEditingController();
 
   File? _pickedImage;
+  PlaceLocation? _pickedLocation;
 
   void _selectImage(File? pickedImage) {
     _pickedImage = pickedImage!;
   }
 
+  void _selectPlace(double lat, double lng) {
+    _pickedLocation = PlaceLocation(latitute: lat, longitude: lng);
+  }
+
   void _savePlace() {
-    if (_titleController.text.isEmpty || _pickedImage == null) {
+    if (_titleController.text.isEmpty ||
+        _pickedImage == null ||
+        _pickedLocation == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text('Your input is incomplete'),
         backgroundColor: Theme.of(context).errorColor,
@@ -34,7 +42,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     } else {
       Provider.of<GreatPlaces>(context, listen: false)
-          .addPlace(_titleController.text, _pickedImage!);
+          .addPlace(_titleController.text, _pickedImage!, _pickedLocation!);
       Navigator.of(context).pop();
     }
   }
@@ -85,7 +93,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const LocationInput()
+                    LocationInput(
+                      onSelectPlace: _selectPlace,
+                    ),
                   ],
                 ),
               ),

@@ -128,6 +128,9 @@ class PlacesListScreen extends StatelessWidget {
                                     DetailScreen.routeName,
                                     arguments: greatPlaces.items[i].id);
                               }),
+                              subtitle: Text(
+                                  '${greatPlaces.items[i].location!.address}',
+                                  style: const TextStyle(fontSize: 15)),
                             ),
                           );
                         },

@@ -60,6 +60,7 @@ class _MapScreenState extends State<MapScreen> {
                 },
         ),
         Positioned(
+          // height: 45,
           bottom: 50,
           left: 120,
           child: _pickeLocation == null
