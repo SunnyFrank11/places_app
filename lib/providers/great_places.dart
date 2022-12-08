@@ -12,11 +12,20 @@ class GreatPlaces with ChangeNotifier {
     return [..._items.reversed];
   }
 
-  void addPlace(String pickedTitle, File pickedImage) {
+  Future<void> addPlace(String pickedTitle, File pickedImage,
+      PlaceLocation pickedLocation) async {
+    final address = await LocationHelper.getPlaceAddress(
+        lat: pickedLocation.latitute, lng: pickedLocation.longitude);
+
+    final updatedLocation = PlaceLocation(
+        latitute: pickedLocation.latitute,
+        longitude: pickedLocation.longitude,
+        address: address);
+
     final newPlace = Place(
         id: DateTime.now().toString(),
         title: pickedTitle,
-        // location: null,
+        location: updatedLocation,
         image: pickedImage);
     _items.add(newPlace);
     notifyListeners();
@@ -26,7 +35,10 @@ class GreatPlaces with ChangeNotifier {
       'id': newPlace.id!,
       'title': newPlace.title,
       'image': newPlace.image!.path,
-      // 'location': newPlace.location!
+      'location': newPlace.location!,
+      'loc_lat': newPlace.location!.latitute,
+      'loc_lng': newPlace.location!.longitude,
+      'address': newPlace.location!.address!,
     });
   }
 
@@ -37,8 +49,14 @@ class GreatPlaces with ChangeNotifier {
           (item) => Place(
             id: item['id'],
             title: item['title'],
-            // location: null,
-            image: File(item['image']),
+            image: File(
+              item['image'],
+            ),
+            location: PlaceLocation(
+              latitute: item['loc_lat'],
+              longitude: item['loc_lng'],
+              address: item['address'],
+            ),
           ),
         )
         .toList();

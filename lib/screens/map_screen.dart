@@ -32,6 +32,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Map'),
       ),
       body: Stack(children: [
@@ -39,9 +40,11 @@ class _MapScreenState extends State<MapScreen> {
           trafficEnabled: true,
           buildingsEnabled: true,
           initialCameraPosition: CameraPosition(
-            zoom: 15,
-            target: LatLng(widget.initialPosition.latitute,
-                widget.initialPosition.longitude),
+            zoom: 16,
+            target: LatLng(
+              widget.initialPosition.latitute,
+              widget.initialPosition.longitude,
+            ),
           ),
           onTap: widget.isSelecting ? _selectLocation : null,
           markers: _pickeLocation == null
@@ -67,10 +70,13 @@ class _MapScreenState extends State<MapScreen> {
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Theme.of(context).colorScheme.secondary),
+                      backgroundColor: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0.5)),
                   child: const Text('COMFIRM LOCATION'),
                 ),
-        )
+        ),
       ]),
     );
   }
