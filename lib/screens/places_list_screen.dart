@@ -129,7 +129,7 @@ class PlacesListScreen extends StatelessWidget {
                                     arguments: greatPlaces.items[i].id);
                               }),
                               subtitle: Text(
-                                  '${greatPlaces.items[i].location!.address}',
+                                  greatPlaces.items[i].location!.address!,
                                   style: const TextStyle(fontSize: 15)),
                             ),
                           );

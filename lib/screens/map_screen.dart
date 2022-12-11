@@ -47,15 +47,16 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           onTap: widget.isSelecting ? _selectLocation : null,
-          markers: _pickeLocation == null
+          markers: (_pickeLocation == null &&
+                  widget
+                      .isSelecting) //! if the map screen is on preview mode vs select mode
               ? {}
               : {
                   Marker(
                     markerId: const MarkerId('P1'),
-                    position: LatLng(
-                      _pickeLocation!.latitude,
-                      _pickeLocation!.longitude,
-                    ),
+                    position: _pickeLocation ??
+                        LatLng(widget.initialPosition.latitute,
+                            widget.initialPosition.longitude),
                   ),
                 },
         ),
@@ -71,10 +72,7 @@ class _MapScreenState extends State<MapScreen> {
                   },
                   style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.5)),
+                      backgroundColor: Theme.of(context).colorScheme.secondary),
                   child: const Text('COMFIRM LOCATION'),
                 ),
         ),
