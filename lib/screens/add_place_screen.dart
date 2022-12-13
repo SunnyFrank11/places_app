@@ -45,11 +45,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     if (_titleController.text.isEmpty ||
         _pickedImage == null ||
         _pickedLocation == null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('Your input is incomplete'),
-        backgroundColor: Theme.of(context).errorColor,
-        duration: const Duration(seconds: 3),
-      ));
+      _notificationError();
       return;
     } else {
       Provider.of<GreatPlaces>(context, listen: false)
@@ -115,7 +111,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
+                  borderRadius: BorderRadius.circular(20)),
               backgroundColor: Theme.of(context).colorScheme.secondary,
               padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.3,
