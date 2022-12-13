@@ -30,7 +30,6 @@ class GreatPlaces with ChangeNotifier {
         image: pickedImage);
     _items.add(newPlace);
     notifyListeners();
-
     //! sqflite implemetation for saving data on device;
     DBHelper.insertData('user_places', {
       'id': newPlace.id!,

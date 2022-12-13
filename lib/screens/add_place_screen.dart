@@ -25,6 +25,18 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     _pickedImage = pickedImage!;
   }
 
+  void _notificationError() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      padding: const EdgeInsets.all(20),
+      content: const Text(
+        'Your input is incomplete',
+        style: TextStyle(fontSize: 18),
+      ),
+      backgroundColor: Theme.of(context).errorColor,
+      duration: const Duration(seconds: 3),
+    ));
+  }
+
   void _selectPlace(double lat, double lng) {
     _pickedLocation = PlaceLocation(latitute: lat, longitude: lng);
   }
@@ -53,7 +65,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         title: const Text('Add Place'),
       ),
       body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(
             height: 10,
