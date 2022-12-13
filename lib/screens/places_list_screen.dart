@@ -92,7 +92,7 @@ class PlacesListScreen extends StatelessWidget {
                               title: Text(greatPlaces.items[i].title),
                               trailing: IconButton(
                                 icon: Icon(
-                                  Icons.delete_sharp,
+                                  Icons.delete_outline_sharp,
                                   size: 30,
                                   color: Theme.of(context).errorColor,
                                 ),
