@@ -4,8 +4,8 @@ import 'package:places_app/providers/great_places.dart';
 import 'package:places_app/screens/map_screen.dart';
 import 'package:provider/provider.dart';
 
-class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+class PlaceDetailScreen extends StatelessWidget {
+  const PlaceDetailScreen({Key? key}) : super(key: key);
 
   static const routeName = '/detail_screen';
 
