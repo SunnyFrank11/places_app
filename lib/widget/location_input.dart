@@ -58,13 +58,14 @@ class _LocationInputState extends State<LocationInput> {
       children: [
         Container(
           decoration: BoxDecoration(
+              border: Border.all(width: 2.0),
               color: Theme.of(context)
                   .colorScheme
                   .primaryContainer
                   .withOpacity(0.5),
               borderRadius: BorderRadius.circular(20)),
           alignment: Alignment.center,
-          height: 170,
+          height: 250,
           width: double.infinity,
           child: _previewImageUrl == null
               ? const Text(
@@ -92,22 +93,22 @@ class _LocationInputState extends State<LocationInput> {
             TextButton.icon(
                 onPressed: _getCurrentLocation,
                 icon: const Icon(
-                  Icons.location_on,
-                  size: 30,
+                  Icons.location_on_outlined,
+                  size: 35,
                 ),
                 label: const Text(
                   'Current Location',
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 17),
                 )),
             TextButton.icon(
                 onPressed: _selectOnMap,
                 icon: const Icon(
-                  Icons.map_sharp,
-                  size: 30,
+                  Icons.map_outlined,
+                  size: 35,
                 ),
                 label: const Text(
                   'Choose on Map',
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 17),
                 ))
           ],
         )
