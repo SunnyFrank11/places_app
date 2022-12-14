@@ -35,48 +35,50 @@ class _MapScreenState extends State<MapScreen> {
         centerTitle: true,
         title: const Text('Map'),
       ),
-      body: Stack(children: [
-        GoogleMap(
-          trafficEnabled: true,
-          buildingsEnabled: true,
-          initialCameraPosition: CameraPosition(
-            zoom: 16,
-            target: LatLng(
-              widget.initialPosition.latitute,
-              widget.initialPosition.longitude,
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          GoogleMap(
+            trafficEnabled: true,
+            buildingsEnabled: true,
+            initialCameraPosition: CameraPosition(
+              zoom: 16,
+              target: LatLng(
+                widget.initialPosition.latitute,
+                widget.initialPosition.longitude,
+              ),
             ),
-          ),
-          onTap: widget.isSelecting ? _selectLocation : null,
-          markers: (_pickeLocation == null &&
-                  widget
-                      .isSelecting) //! if the map screen is on preview mode vs select mode
-              ? {}
-              : {
-                  Marker(
-                    markerId: const MarkerId('P1'),
-                    position: _pickeLocation ??
-                        LatLng(widget.initialPosition.latitute,
-                            widget.initialPosition.longitude),
-                  ),
-                },
-        ),
-        Positioned(
-          // height: 45,
-          bottom: 50,
-          left: 120,
-          child: _pickeLocation == null
-              ? Container()
-              : ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(_pickeLocation);
+            onTap: widget.isSelecting ? _selectLocation : null,
+            markers: (_pickeLocation == null &&
+                    widget
+                        .isSelecting) //! if the map screen is on preview mode vs select mode
+                ? {}
+                : {
+                    Marker(
+                      markerId: const MarkerId('P1'),
+                      position: _pickeLocation ??
+                          LatLng(widget.initialPosition.latitute,
+                              widget.initialPosition.longitude),
+                    ),
                   },
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Theme.of(context).colorScheme.secondary),
-                  child: const Text('COMFIRM LOCATION'),
-                ),
-        ),
-      ]),
+          ),
+          Positioned(
+            bottom: 30,
+            child: _pickeLocation == null
+                ? Container()
+                : ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(_pickeLocation);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary),
+                    child: const Text('COMFIRM LOCATION'),
+                  ),
+          ),
+        ],
+      ),
     );
   }
 }

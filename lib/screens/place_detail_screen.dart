@@ -12,22 +12,22 @@ class PlaceDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)?.settings.arguments as String;
-    final selectedPlace = Provider.of<GreatPlaces>(context, listen: false);
-    final myPlace =
-        selectedPlace.items.firstWhere((element) => element.id == id);
+    final place = Provider.of<GreatPlaces>(context, listen: false);
+    final userSelectedPlace =
+        place.items.firstWhere((element) => element.id == id);
     return Scaffold(
       appBar: AppBar(
-        title: Text(myPlace.title),
+        title: Text(userSelectedPlace.title),
       ),
       body: SingleChildScrollView(
         child: Column(children: [
           Hero(
-            tag: myPlace.id!,
+            tag: userSelectedPlace.id!,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: Image.file(
-                myPlace.image!,
+                userSelectedPlace.image!,
                 fit: BoxFit.contain,
               ),
             ),
