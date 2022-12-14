@@ -10,7 +10,7 @@ class GreatPlaces with ChangeNotifier {
   List<Place> _items = [];
 
   List<Place> get items {
-    return [..._items.reversed];
+    return [..._items];
   }
 
   Future<void> addPlace(String pickedTitle, File pickedImage,

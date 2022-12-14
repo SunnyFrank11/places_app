@@ -30,7 +30,7 @@ class _LocationInputState extends State<LocationInput> {
       final locationData = Location(); //! this is from the location package
       final locData = await locationData.getLocation();
 
-      _showPreview(lat: locData.latitude, lng: locData.latitude);
+      _showPreview(lat: locData.latitude, lng: locData.longitude);
       widget.onSelectPlace(locData.latitude, locData.longitude);
     } catch (error) {
       return;
@@ -58,7 +58,7 @@ class _LocationInputState extends State<LocationInput> {
       children: [
         Container(
           decoration: BoxDecoration(
-              border: Border.all(width: 2.0),
+              border: Border.all(width: 1.5),
               color: Theme.of(context)
                   .colorScheme
                   .primaryContainer

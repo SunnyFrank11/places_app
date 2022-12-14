@@ -49,9 +49,8 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
             onTap: widget.isSelecting ? _selectLocation : null,
-            markers: (_pickeLocation == null &&
-                    widget
-                        .isSelecting) //! if the map screen is on preview mode vs select mode
+            //! if the map screen is on preview mode vs select mode
+            markers: (_pickeLocation == null && widget.isSelecting)
                 ? {}
                 : {
                     Marker(

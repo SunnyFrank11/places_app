@@ -28,9 +28,13 @@ class PlaceDetailScreen extends StatelessWidget {
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: Image.file(
                 userSelectedPlace.image!,
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
               ),
             ),
+          ),
+          Container(
+            height: 5,
+            color: Theme.of(context).colorScheme.primary,
           ),
           Container(
             decoration: BoxDecoration(
@@ -47,7 +51,7 @@ class PlaceDetailScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: FittedBox(
                     child: Text(
-                      myPlace.location!.address!,
+                      userSelectedPlace.location!.address!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 20,
@@ -67,15 +71,16 @@ class PlaceDetailScreen extends StatelessWidget {
                           builder: (context) {
                             return MapScreen(
                               initialPosition: PlaceLocation(
-                                latitute: myPlace.location!.latitute,
-                                longitude: myPlace.location!.longitude,
+                                latitute: userSelectedPlace.location!.latitute,
+                                longitude:
+                                    userSelectedPlace.location!.longitude,
                               ),
                             );
                           },
                           fullscreenDialog: true,
                         ));
                       },
-                      icon: const Icon(Icons.map_rounded),
+                      icon: const Icon(Icons.map_outlined),
                       label: const Text(
                         'View on map',
                         style: TextStyle(fontSize: 20),

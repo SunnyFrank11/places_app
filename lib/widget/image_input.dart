@@ -52,7 +52,7 @@ class _ImageInputState extends State<ImageInput> {
                 Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5),
             borderRadius: const BorderRadius.all(Radius.circular(22)),
             border: Border.all(
-              width: 2.5,
+              width: 2,
             ),
           ),
           alignment: Alignment.center,
@@ -70,7 +70,7 @@ class _ImageInputState extends State<ImageInput> {
                   ),
                   Positioned(
                     top: -5,
-                    left: 95,
+                    left: 90,
                     child: SizedBox(
                       child: IconButton(
                         iconSize: 40,

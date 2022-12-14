@@ -17,7 +17,6 @@ class AddPlaceScreen extends StatefulWidget {
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
-  
   File? _pickedImage;
   PlaceLocation? _pickedLocation;
 
@@ -81,7 +80,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(25),
                           ),
-                          borderSide: BorderSide(width: 2.0),
+                          borderSide:
+                              BorderSide(width: 2.0, color: Colors.green),
                         ),
                         labelText: 'Title',
                         enabledBorder: OutlineInputBorder(
